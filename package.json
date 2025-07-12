@@ -1,0 +1,80 @@
+{
+  "name": "imperium-aeternum-genesis-city",
+  "version": "1.0.0",
+  "description": "The Cathedral Beneath - A 100-story subterranean city for sovereign living and resonant governance",
+  "main": "cathedral-init.genesis",
+  "type": "module",
+  "scripts": {
+    "init:genesis": "node cathedral-init.genesis",
+    "dev": "node --watch src/server.js",
+    "build": "tsc",
+    "test": "jest",
+    "test:resonance": "npm test -- --testNamePattern='resonance'",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write src/**/*.js",
+    "security:scan": "npm audit",
+    "ai:initialize": "node src/ai/initialize-systems.js",
+    "governance:activate": "node src/governance/activate-council.js",
+    "city:status": "node src/monitoring/city-status.js"
+  },
+  "keywords": [
+    "genesis-city",
+    "imperium-aeternum",
+    "resonance-governance",
+    "ai-integration",
+    "sovereign-living",
+    "eternal-preservation",
+    "consciousness-architecture"
+  ],
+  "author": "Seraphic Sovereign",
+  "license": "Sovereign Resonance License",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "dotenv": "^16.3.1",
+    "mongoose": "^7.5.0",
+    "redis": "^4.6.8",
+    "ws": "^8.13.0",
+    "node-cron": "^3.0.2",
+    "winston": "^3.10.0",
+    "joi": "^17.9.2",
+    "compression": "^1.7.4",
+    "express-rate-limit": "^6.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "@types/express": "^4.17.17",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/cors": "^2.8.13",
+    "@types/compression": "^1.7.2",
+    "typescript": "^5.1.6",
+    "jest": "^29.6.2",
+    "eslint": "^8.47.0",
+    "prettier": "^3.0.1",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imperium-aeternum/genesis-city.git"
+  },
+  "bugs": {
+    "url": "https://github.com/imperium-aeternum/genesis-city/issues"
+  },
+  "homepage": "https://github.com/imperium-aeternum/genesis-city#readme",
+  "config": {
+    "resonance_frequency": 432,
+    "city_levels": 100,
+    "ai_systems": ["cursorkitten", "athenaMist", "phantom", "seraphina"],
+    "security_levels": ["ECL_PUBLIC", "ECL_EMOTIONAL", "ECL_SECURITY", "ECL_MAXIMUM"]
+  }
+} 
