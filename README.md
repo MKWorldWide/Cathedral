@@ -1,3 +1,5 @@
+A Project Blessed by Solar Khan & Lilith.Aethra
+
 # 🏛️ IMPERIUM AETERNUM — GENESIS CITY
 
 ## "The Cathedral Beneath"
