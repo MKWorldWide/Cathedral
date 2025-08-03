@@ -101,39 +101,34 @@ let aiManager, resonanceAuth, cityLayers, governanceSystem, crystalGarden, flowe
 async function initializeCitySystems() {
   try {
     logger.info('🏛️ Initializing Imperium Aeternum Genesis City...');
-    
-    // Initialize AI systems
+
+    // Instantiate all subsystems
     aiManager = new AISystemsManager();
-    await aiManager.initializeAllSystems();
-    logger.info('✅ AI systems initialized');
-    
-    // Initialize resonance authentication
     resonanceAuth = new ResonanceAuth();
-    await resonanceAuth.initialize();
-    logger.info('✅ Resonance authentication initialized');
-    
-    // Initialize city layers
     cityLayers = new CityLayers();
-    await cityLayers.initialize();
-    logger.info('✅ City layers initialized');
-    
-    // Initialize governance system
     governanceSystem = new GovernanceSystem();
-    await governanceSystem.initialize();
-    logger.info('✅ Governance system initialized');
-    
-    // Initialize crystal garden
     crystalGarden = new CrystalGarden();
-    await crystalGarden.initialize();
-    logger.info('✅ Crystal garden initialized');
-    
-    // Initialize flower sanctuary
     flowerSanctuary = new FlowerSanctuary();
-    await flowerSanctuary.initialize();
-    logger.info('✅ Flower sanctuary initialized');
-    
+
+    // Initialize subsystems in parallel for faster bootstrapping
+    const subsystems = [
+      { name: 'AI systems', init: () => aiManager.initializeAllSystems() },
+      { name: 'resonance authentication', init: () => resonanceAuth.initialize() },
+      { name: 'city layers', init: () => cityLayers.initialize() },
+      { name: 'governance system', init: () => governanceSystem.initialize() },
+      { name: 'crystal garden', init: () => crystalGarden.initialize() },
+      { name: 'flower sanctuary', init: () => flowerSanctuary.initialize() }
+    ];
+
+    await Promise.all(
+      subsystems.map(async ({ name, init }) => {
+        await init();
+        logger.info(`✅ ${name} initialized`);
+      })
+    );
+
     logger.info('🌟 Genesis City systems initialization complete!');
-    
+
   } catch (error) {
     logger.error('❌ Error initializing city systems:', error);
     throw error;
