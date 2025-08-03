@@ -9,7 +9,6 @@
  */
 
 import crypto from 'crypto';
-import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 /**
@@ -28,6 +27,13 @@ export class ResonanceAuth {
     this.activeSessions = new Map();
     this.resonancePatterns = new Map();
     this.systemResonance = 'harmonious';
+
+    // Centralize JWT secret and warn if default is used
+    const defaultSecret = 'genesis-city-resonance-secret';
+    this.jwtSecret = process.env.JWT_SECRET || defaultSecret;
+    if (this.jwtSecret === defaultSecret) {
+      console.warn('⚠️ Using default JWT secret; set JWT_SECRET for production security');
+    }
   }
 
   /**
@@ -300,9 +306,8 @@ export class ResonanceAuth {
       timestamp: Date.now(),
       resonance: this.systemResonance
     };
-    
-    const secret = process.env.JWT_SECRET || 'genesis-city-resonance-secret';
-    return jwt.sign(payload, secret, { expiresIn: '24h' });
+
+    return jwt.sign(payload, this.jwtSecret, { expiresIn: '24h' });
   }
 
   /**
@@ -310,8 +315,7 @@ export class ResonanceAuth {
    */
   verifyAccessToken(token) {
     try {
-      const secret = process.env.JWT_SECRET || 'genesis-city-resonance-secret';
-      const decoded = jwt.verify(token, secret);
+      const decoded = jwt.verify(token, this.jwtSecret);
       return { valid: true, payload: decoded };
     } catch (error) {
       return { valid: false, error: error.message };
