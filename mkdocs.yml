@@ -1,4 +1,81 @@
-site_name: Cathedral
+site_name: The Cathedral
+site_description: A 100-story subterranean city for sovereign living and resonant governance
+site_author: Seraphic Sovereign
+
+# Repository
+repo_name: MKWorldWide/Cathedral
+repo_url: https://github.com/MKWorldWide/Cathedral
+edit_uri: edit/main/docs/
+
+# Theme
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.sections
+    - navigation.footer
+    - navigation.tracking
+    - toc.integrate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: lime
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+# Navigation
 nav:
   - Home: index.md
-  - Divine Law: COVENANT.md
+  - 'Getting Started':
+    - 'Quick Start': 'getting-started/quick-start.md'
+    - 'Architecture': 'getting-started/architecture.md'
+  - 'Guides':
+    - 'Governance': 'guides/governance.md'
+    - 'Security': 'guides/security.md'
+    - 'AI Integration': 'guides/ai-integration.md'
+  - 'API Reference':
+    - 'Core Systems': 'api/core.md'
+    - 'Modules': 'api/modules.md'
+  - 'Divine Law': 'COVENANT.md'
+  - 'Contributing': 'CONTRIBUTING.md'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasks
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+# Plugins
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: timeago
+      fallback_to_build_date: true
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/MKWorldWide/Cathedral
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/MKWorldWide
+
+# Copyright
+copyright: Copyright &copy; 2025 MK Worldwide. All rights reserved.
